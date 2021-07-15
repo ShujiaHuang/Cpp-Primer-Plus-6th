@@ -1,0 +1,4 @@
+
+*.o
+*.sh
+.DS_Store
