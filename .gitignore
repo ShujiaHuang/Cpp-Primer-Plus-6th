@@ -2,3 +2,5 @@
 *.o
 *.sh
 .DS_Store
+
+.idea/
