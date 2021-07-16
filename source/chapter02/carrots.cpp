@@ -1,21 +1,19 @@
-// carrots.cpp -- food processing program
-// uses and displays a variable
+// food processing program
 
 #include <iostream>
 
-int main()
-{
+int main() {
     using namespace std;
-    
-    int carrots;            // declare an integer variable
-    
-    carrots = 25;            // assign a value to the variable
+
+    int carrots;
+
+    carrots = 25;
     cout << "I have ";
-    cout << carrots;        // display the value of the variable
-    cout << " carrots.";
+    cout << carrots;
     cout << endl;
-    carrots = carrots - 1;  // modify the variable
+
+    carrots = carrots - 1;
     cout << "Crunch, crunch. Now I have " << carrots << " carrots." << endl;
-    // cin.get();
-	return 0;
+
+    return 0;
 }
