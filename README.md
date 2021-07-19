@@ -1,4 +1,4 @@
-# C++ Primer Plus 第六版中文版原书代码和习题答案
+# C++ Primer Plus 第六版中文版原书代码和习题解答
 
 <p align="center"><a> ---- START ---- </a></p>
 
