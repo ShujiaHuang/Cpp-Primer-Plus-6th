@@ -4,20 +4,20 @@
 
 
 double celsiu2fahrenit(double celsius) {
-	return 1.8 * celsius + 32.0;
+    return 1.8 * celsius + 32.0;
 }
 
 
 int main() {
 
-	using namespace std;
+    using namespace std;
 
-	double celsius;
-	cout << "Please enter a celsius value: ";
-	cin >> celsius;
+    double celsius;
+    cout << "Please enter a celsius value: ";
+    cin >> celsius;
 
-	cout << celsius << " degrees Celsius is " 
-		 << celsiu2fahrenit(celsius) << " degrees Fahrenheit." << endl;
+    cout << celsius << " degrees Celsius is "
+         << celsiu2fahrenit(celsius) << " degrees Fahrenheit." << endl;
 
-	return 0;
+    return 0;
 }

@@ -7,21 +7,21 @@ using namespace std;
 
 void display_time(double hours, double minutes) {
 
-	cout << "Time: " << hours << ":" << minutes << endl;
+    cout << "Time: " << hours << ":" << minutes << endl;
 
-	return;
+    return;
 }
 
-int main() {	
+int main() {
 
-	double hours, minutes;
-	cout << "Enter the number of hours: ";
-	cin >> hours;
+    double hours, minutes;
+    cout << "Enter the number of hours: ";
+    cin >> hours;
 
-	cout << "Enter the number of minutes: ";
-	cin >> minutes;
+    cout << "Enter the number of minutes: ";
+    cin >> minutes;
 
-	display_time(hours, minutes);
+    display_time(hours, minutes);
 
-	return 0;
+    return 0;
 }

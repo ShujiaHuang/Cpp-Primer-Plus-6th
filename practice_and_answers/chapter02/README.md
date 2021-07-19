@@ -11,10 +11,10 @@
 
 int main() {
 
-	using namespace std;
+    using namespace std;
 
-	cout << "Hi there, I'm Shujia Huang from Shenzhen, Guangdong, China" << endl;
-	return 0;
+    cout << "Hi there, I'm Shujia Huang from Shenzhen, Guangdong, China" << endl;
+    return 0;
 }
 
 ```
@@ -23,7 +23,7 @@ int main() {
 ## 2.2
 
 编写一个C++程序，它要求用户输入一个以 long 为单位的距离， 然后将它转换为码（yard，一long 等于 220 码）。
-
+    
 **解：**
 
 
@@ -32,16 +32,17 @@ int main() {
 #include <iostream>
 
 int main() {
-	using namespace std;
 
-	int distance=0, yard;
-	cout << "Please input a distance numebr in the unit of Long: ";
-	cin >> distance;
-	yard = distance * 220;
+    using namespace std;
 
-	cout << "The distance tranform in yards is: " << yard << endl;
+    int distance=0, yard;
+    cout << "Please input a distance numebr in the unit of Long: ";
+    cin >> distance;
+    yard = distance * 220;
 
-	return 0;
+    cout << "The distance tranform in yards is: " << yard << endl;
+
+    return 0;
 }
 
 ```
@@ -71,23 +72,23 @@ See how they run
 using namespace std;
 
 void blind_mice() {
-	cout << "Three blind mice." << endl;
-	return;
+    cout << "Three blind mice." << endl;
+    return;
 }
 
 void how_they_run() {
-	cout << "See how they run" << endl;
-	return;
+    cout << "See how they run" << endl;
+    return;
 }
 
 int main() {
 
-	blind_mice();
-	blind_mice();
+    blind_mice();
+    blind_mice();
 
-	how_they_run();
-	how_they_run();
-	return 0;
+    how_they_run();
+    how_they_run();
+    return 0;
 }
 
 ```
@@ -109,15 +110,15 @@ Enter your age: 29
 
 int main() {
 
-	using namespace std;
+    using namespace std;
 
-	int years, months;
-	cout << "Enter your age: ";
-	cin >> years;
+    int years, months;
+    cout << "Enter your age: ";
+    cin >> years;
 
-	months = years * 12;
-	cout << years << " years is " << months << " monthes." << endl;  
-	return 0;
+    months = years * 12;
+    cout << years << " years is " << months << " monthes." << endl;  
+    return 0;
 }
 
 ```
@@ -145,22 +146,22 @@ Please enter a Celsius value: 20
 
 
 double celsiu2fahrenit(double celsius) {
-	return 1.8 * celsius + 32.0;
+    return 1.8 * celsius + 32.0;
 }
 
 
 int main() {
 
-	using namespace std;
+    using namespace std;
 
-	double celsius;
-	cout << "Please enter a celsius value: ";
-	cin >> celsius;
+    double celsius;
+    cout << "Please enter a celsius value: ";
+    cin >> celsius;
 
-	cout << celsius << " degrees Celsius is " 
-		 << celsiu2fahrenit(celsius) << " degrees Fahrenheit." << endl;
+    cout << celsius << " degrees Celsius is " 
+         << celsiu2fahrenit(celsius) << " degrees Fahrenheit." << endl;
 
-	return 0;
+    return 0;
 }
 
 ```
@@ -189,24 +190,24 @@ Enter the number of light years: 4.2
 
 double light_years2astromonical_unit(double light_years) {
 
-	return light_years * 63240;
+    return light_years * 63240;
 }
 
 
 int main() {
 
-	using namespace std;
+    using namespace std;
 
-	double light_years;
-	cout << "nter the number of light years: ";
-	cin >> light_years;
+    double light_years;
+    cout << "nter the number of light years: ";
+    cin >> light_years;
 
-	cout << light_years 
-		 << " light years = " 
-		 << light_years2astromonical_unit(light_years)
-		 << " astromonical units." << endl;
+    cout << light_years 
+         << " light years = " 
+         << light_years2astromonical_unit(light_years)
+         << " astromonical units." << endl;
 
-	return 0;
+    return 0;
 }
 
 ```
@@ -235,23 +236,23 @@ using namespace std;
 
 void display_time(double hours, double minutes) {
 
-	cout << "Time: " << hours << ":" << minutes << endl;
+    cout << "Time: " << hours << ":" << minutes << endl;
 
-	return;
+    return;
 }
 
-int main() {	
+int main() {    
 
-	double hours, minutes;
-	cout << "Enter the number of hours: ";
-	cin >> hours;
+    double hours, minutes;
+    cout << "Enter the number of hours: ";
+    cin >> hours;
 
-	cout << "Enter the number of minutes: ";
-	cin >> minutes;
+    cout << "Enter the number of minutes: ";
+    cin >> minutes;
 
-	display_time(hours, minutes);
+    display_time(hours, minutes);
 
-	return 0;
+    return 0;
 }
 
 ```

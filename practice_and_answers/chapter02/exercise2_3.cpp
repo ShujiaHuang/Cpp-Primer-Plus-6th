@@ -4,21 +4,21 @@
 using namespace std;
 
 void blind_mice() {
-	cout << "Three blind mice." << endl;
-	return;
+    cout << "Three blind mice." << endl;
+    return;
 }
 
 void how_they_run() {
-	cout << "See how they run" << endl;
-	return;
+    cout << "See how they run" << endl;
+    return;
 }
 
 int main() {
 
-	blind_mice();
-	blind_mice();
+    blind_mice();
+    blind_mice();
 
-	how_they_run();
-	how_they_run();
-	return 0;
+    how_they_run();
+    how_they_run();
+    return 0;
 }
