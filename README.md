@@ -1,5 +1,19 @@
 # C++ Primer Plus 第六版中文版原书代码和习题解答
 
+![C++ Primer Plus](https://static.fungenomics.com/images/2021/07/c-primer-plus6.jpg)
+
+这是最有名的 C++ 入门书之一，内容系统且易读，大学教材。
+
+**下载**
+
+《C++ Primer Plus（第6版）中文版》 带书签 pdf 电子书可以从我的百度云盘下载：
+
+```bash
+链接: https://pan.baidu.com/s/1WXc_hfJhJKL4c8InAVXHMg  密码: cg2f
+```
+
+全书一共 18 章，外加 10 章附录，pdf 文件大小 156.07 MB。虽然很大，但这是文字版+完整标签，而非扫描版。
+
 <p align="center"><a> ---- START ---- </a></p>
 
 ## 目录
