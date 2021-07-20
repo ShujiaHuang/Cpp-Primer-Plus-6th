@@ -22,7 +22,7 @@
 **第 I 部分 : C++ 基础**
 
 - [第 02 章 : 开始学习C++](practice/chapter02/README.md)
-- [第 03 章 : 处理数据，数据类型](practice/chapter03/README.md)
+- [第 03 章 : 处理数据，数据类型](practice/chapter03/README.md) [笔记](practice/booknotes.md#第三章-处理数据)
 - [第 04 章 : 复合类型](practice/chapter04/README.md)
 - [第 05 章 : 循环和关系表达式](practice/chapter05/README.md)
 - [第 06 章 : 分支语句和逻辑运算符](practice/chapter06/README.md)
