@@ -2,7 +2,7 @@
 
 ![C++ Primer Plus](https://static.fungenomics.com/images/2021/07/c-primer-plus6.jpg)
 
-这是最有名的 C++ 入门书之一，内容系统且易读，大学教材。
+这是最有名的 C++ 入门书之一，内容系统且易读（我认为比《C++ Primer》更适合入门），可做大学教材。
 
 ## 下载
 
@@ -23,7 +23,7 @@
 
 - [第 02 章 : 开始学习C++](practice/chapter02/README.md)
 - [第 03 章 : 处理数据，数据类型](practice/chapter03/README.md) | ([笔记](practice/booknotes.md#第三章-处理数据))
-- [第 04 章 : 复合类型](practice/chapter04/README.md)
+- [第 04 章 : 复合类型](practice/chapter04/README.md) | ([笔记](practice/booknotes.md#第四章-复合类型))
 - [第 05 章 : 循环和关系表达式](practice/chapter05/README.md)
 - [第 06 章 : 分支语句和逻辑运算符](practice/chapter06/README.md)
 - [第 07 章 : 函数](practice/chapter07/README.md)
