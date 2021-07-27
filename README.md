@@ -2,7 +2,10 @@
 
 ![C++ Primer Plus](https://static.fungenomics.com/images/2021/07/c-primer-plus6.jpg)
 
-这是最有名的 C++ 入门书之一，内容系统且易读（我认为比《C++ Primer》更适合入门），可做大学教材。
+这是最有名的 C++ 入门书之一，内容系统、易读（我认为比《C++ Primer》更适合入门）。
+
+本项目是《C++ Primer Plus（第6版）中文版》的学习仓库，包括笔记和我所给出的课后练习答案。
+
 
 ## 下载
 
