@@ -1523,5 +1523,262 @@ expression1 ? expression2 : expression3
 
 ## 6.7 读取数字的循环
 
+假设要编写一个将一系列数字读入到数组中的程序，并允许用户在 数组填满之前结束输入。一种方法是利用cin。看下面的代码：
+
+```Cpp
+int n;
+cin >> n;
+```
+
+如果用户输入一个单词，而不是一个数字，发生这种类型不匹配的情况时，将发生4种情况：
+
+- `n` 的值保持不变；
+- 不匹配的输入将被留在输入队列中；
+- `cin` 对象中的一个错误标记被设置；
+- 对 `cin` 方法的调用将返回 `false`（如果被转换为 `bool` 类型）。
+
+方法返回 `false` 意味着可以用非数字输入来结束读取数字的循环。当用户输入的不是数字时，该程序将不再读取输入。非数字输入设置错误标记意味着必须重置该标记，程序才能继续读取输 入。`clear()` 方法重置错误输入标记，同时也重置文件尾（`EOF`条件，参见第5章）。输入错误和 `EOF` 都将导致cin返回 `false`。
+
+![image-20210729001427328](https://static.fungenomics.com/images/2021/07/image-20210729001427328.png)
+
+![image-20210729001350955](https://static.fungenomics.com/images/2021/07/image-20210729001350955.png)
+
+如果用户输入非数字输入，程序将拒绝，并要求用户继续输入数 字。可以看到，可以使用cin输入表达式的值来检测输入是不是数字。 程序发现用户输入了错误内容时，应采取3个步骤：
+
+- 重置 `cin` 以接受新的输入；
+- 删除错误输入；
+- 提示用户再输入。
+
+请注意，程序必须先重置cin，然后才能删除错误输入。程序清单 6.14演示了如何完成这些工作。
+
+```Cpp
+#include <iostream>
+
+const int Max = 5;
+int main() {
+    using namespace std;
+    // get data
+    int golf[Max];
+    cout << "Please enter your golf scores.\n";
+    cout << "You must enter " << Max << " rounds.\n";
+    int i;
+    for (i = 0; i < Max; i++)
+    {
+        cout << "round #" << i+1 << ": ";
+        while (!(cin >> golf[i])) {
+            cin.clear();     // reset input
+            while (cin.get() != '\n')
+                continue;    // get rid of bad input
+                
+            cout << "Please enter a number: ";
+        }
+    }
+    
+    // calculate average
+    double total = 0.0;
+    for (i = 0; i < Max; i++)
+        total += golf[i];
+        
+    // report results
+    cout << total / Max << " = average score "
+         << Max << " rounds\n";
+    // cin.get();
+    // cin.get();
+    return 0;
+}
+```
+
+![image-20210729165001482](https://static.fungenomics.com/images/2021/07/image-20210729165001482.png)
+
+> 如果用户输入 88，则 `cin` 表达式将为 `true`，因此将一个值放到数组中；而表达式 `!(cin >> golf [i])` 为 `false`，因此结束内部循环。然而，如果用户输入 `must i?`，则 `cin` 表达式将为 `false`，因此不会将任何值放到数组 中；而表达式 `!(cin >> golf [i])` 将为 `true`，因此进入内部的 `while` 循环。该循环的第一条语句使用 `clear()` 方法重置输入，如果省略这条语句，程序将拒绝继续读取输入。接下来，程序在 `while` 循环中使用 `cin.get()` 来读取 行尾之前的所有输入，从而删除这一行中的错误输入。另一种方法是读取到下一个空白字符，这样将每次删除一个单词，而不是一次删除整 行。最后，程序告诉用户，应输入一个数字。
+
+## 6.8 简单文件输入/输出
+
+### 6.8.1 文本I/O和文本文件
+### 6.8.2 写入到文本文件中
+文件输出：
+
+- 必须包含头文件 `fstream`；
+- 头文件 `fstream` 定义了一个用于处理输出的 `ofstream` 类；
+- 需要声明一个或多个ofstream变量（对象），并以自己喜欢的方式 对其进行命名，条件是遵守常用的命名规则；
+- 必须指明名称空间 `std`；例如，为引用元素 `ofstream`，必须使用编译指令`using` 或前缀 `std::`；
+- 需要将 `ofstream` 对象与文件关联起来。为此，方法之一是使用 `open()` 方法；
+- 使用完文件后，应使用方法 `close()` 将其关闭；
+- 可结合使用 `ofstream` 对象和运算符 `<<` 来输出各种类型的数据。
+
+虽然头文件 `iostream` 提供了一个预先定义好的名为 `cout` 的 `ostream` 对象，但您必须声明自己的 `ofstream` 对象，为其命名，并将其同文件关联起来。
+
+![image-20210729232741786](https://static.fungenomics.com/images/2021/07/image-20210729232741786.png)
+
+注意，方法open( )接受一个C-风格字符串作为参数，这可以是一个 字面字符串，也可以是存储在数组中的字符串。
+
+重要的是，声明一个ofstream对象并将其同文件关联起来后，便可 以像使用cout那样使用它。所有可用于cout的操作和方法（如<<、endl 和setf( )）都可用于ofstream对象（如前述示例中的outFile和fout）。
+
+总之，使用文件输出的主要步骤如下：
+
+- 包含头文件 `fstream`；
+- 创建一个 `ofstream` 对象；
+- 将该 `ofstream` 对象同一个文件关联起来；
+- 就像使用 `cout` 那样使用该 `ofstream` 对象;
+- 调用 `close()` 成员函数，关闭文件。
+
+> 默认情况下，`open()` 将首先截断该文件，即将其长度截短到零——丢其原有的内容，然后将新 的输出加入到该文件中。
+
+
+### 6.8.3 读取文本文件
+
+接下来介绍文本文件输入，它是基于控制台输入的。控制台输入涉 及多个方面，下面首先总结这些方面：
+
+- 必须包含头文件 `fstream`；
+- 头文件 `fstream` 定义了一个用于处理输入的 `ifstream` 类；
+- 需要声明一个或多个 `ifstream` 变量（对象），并以自己喜欢的方式对其进行命名，条件是遵守常用的命名规则；
+- 必须指明名称空间 `std`；例如，为引用元素 `ifstream`，必须使用编译指令`using`或前缀`std::`；
+- 需要将 `ifstream` 对象与文件关联起来。为此，方法之一是使用 `open()` 方法；
+- 使用完文件后，应使用 `close()` 方法将其关闭；
+- 可结合使用 `ifstream` 对象和运算符 `>>` 来读取各种类型的数据；
+- 可以使用 `ifstream` 对象和 `get()` 方法来读取一个字符，使用 `ifstream` 对象和 `getline()` 来读取一行字符；
+- 可以结合使用 `ifstream` 和 `eof()`、`fail()` 等方法来判断输入是否成功；
+- `ifstream` 对象本身被用作测试条件时，如果最后一个读取操作成 功，它将被转换为布尔值 `true`，否则被转换为 `false`。
+
+如果试图打开一个不存在的文件用于输入，情况将如何呢？这种错 误将导致后面使用`ifstream` 对象进行输入时失败。检查文件是否被成功打开的首先方法是使用方法`is_open()`，为此，可以使用类似于下面的代码：
+
+```Cpp
+inFile.open("b.txt");
+if (!inFile.is_open()) {
+    exit(EXIT_FEAILURE);
+}
+```
+
+如果文件被成功地打开，方法 `is_open()` 将返回 `true`；因此如果文件没有被打开，表达式 `!inFile.isopen()` 将为 `true`。函数 `exit()` 的原型是在头文件 `cstdlib` 中定义的，在该头文件中，还定义了一个用于同操作系统通信的参数值 `EXIT_FAILURE`。函数 `exit()` 终止程序。
+
+> 方法 `is_open()` 是C++中相对较新的内容。如果读者的编译器不支持它，可使用较老的方法 `good()` 来代替。
+
+程序例子：
+
+![image-20210730001839791](https://static.fungenomics.com/images/2021/07/image-20210730001839791.png)![image-20210730001922821](https://static.fungenomics.com/images/2021/07/image-20210730001922821.png)
+
+假设该文件名为scores.txt，包含的内容如下：
+
+```bash
+18 19 18.5 13.5
+16 19.5 18.5
+17.5
+```
+
+> 检查文件是否被成功打开至关重要。
+
+读取文件时，有 几点需要检查。首先，程序读取文件时不应超过EOF。如果最后一次读 取数据时遇到 `EOF`，方法 `eof()` 将返回 `true`。其次，程序可能遇到类型不 匹配的情况。例如，程序清单6.16期望文件中只包含数字。如果最后一次读取操作中发生了类型不匹配的情况，方法 `fail()` 将返回 `true`（如果遇到了 `EOF`，该方法也将返回 `true`）。最后，可能出现意外的问题，如文 件受损或硬件故障。如果最后一次读取文件时发生了这样的问题，方法 `bad()` 将返回 `true`。不要分别检查这些情况，一种更简单的方法是使用 `good()` 方法，该方法在没有发生任何错误时返回 `true`：
+
+```Cpp
+while (inFile.good()) {
+    ......
+}
+```
+
+方法 `good()` 指出最后一次读取输入的操作是否成功，这一点至关重要。这意味着应该在执行读取输入的操作后，立刻应用这种测试。为此，一种标准方法是，在循环之前（首次执行循环测试前）放置一条输 入语句，并在循环的末尾（下次执行循环测试之前）放置另一条输入语句：
+
+```Cpp
+// standard file-reading loop design
+inFile >> value;         // get first value
+while (inFile.good()) {  // while uput good and not at EOF
+    //loop body goes here
+    inFile >> value;     // get next value
+}
+```
+
+鉴于以下事实，可以对上述代码进行精简：表达式 `inFile >> value` 的结果为`inFile`，而在需要一个 `bool` 值的情况下，`inFile` 的结果为 `inFile.good()`，即 `true` 或 `false`。
+
+因此，可以将两条输入语句用一条用作循环测试的输入语句代替。 也就是说，可以将上述循环结构替换为如下循环结构：
+
+```Cpp
+// omit pre-loop input
+while (inFile >> value) {  // read and test for success
+    // loop body goes here
+    // omit end-of-loop input
+}
+```
+
+![image-20210730002759125](https://static.fungenomics.com/images/2021/07/image-20210730002759125.png)
+
+这些代码紧跟在循环的后面，用于判断循环为何终止。由于 `eof()` 只能判断是否到达 `EOF`，而 `fail()` 可用于检查 `EOF` 和类型不匹配，因此上述 代码首先判断是否到达 `EOF`。这样，如果执行到了 `else if` 测试，便可排除 `EOF`，因此，如果 `fail()` 返回 `true`，便可断定导致循环终止的原因是类型不匹配。
+
+这种设计仍然遵循了在测试之前进行读取的规则，因为要计算表达式 `inFile >> value` 的值，程序必须首先试图将一个数字读取到 `value` 中。
+
+以上仅是对文件 I/O 的初步介绍。
+
+
+
+## 6.9 总结
+
+C++提供了 `if` 语句、`if else`语句和 `switch` 语句来管理选项。
+C++还提供了帮助决策的运算符。通过使用逻辑运算符（`&&`、`||` 和 `!`），可以组合或修改关系表达式，创建更细致的测试。条件运算符 `(?:)` 提供了一种选择两个值之一 的简洁方式。
+
+`cctype` 字符函数库提供了一组方便的、功能强大的工具，可用于分析字符输入。
+
+![image-20210728232856482](https://static.fungenomics.com/images/2021/07/image-20210728232856482.png)
+![image-20210728232930054](https://static.fungenomics.com/images/2021/07/image-20210728232930054.png)
+
+文件I/O与控 制台I/O极其相似。声明ifstream和ofstream对象，并将它们同文件关联起 来后，便可以像使用cin和cout那样使用这些对象。
+
+
+
+# 第七章 函数——C++的编程模块
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
