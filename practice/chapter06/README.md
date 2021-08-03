@@ -319,19 +319,84 @@ int main() {
 
 ## 6.6
 
-**题：** 编写一个程序，记录捐助给“维护合法权利团体”的资金。该程序要求用户输入捐献者数目，然后要求用户输入每一个捐献者的姓名和款项。这些信息被储存在一个动态分配的结构数组中。每个结构有两个成员：用来储存姓名的字符数组（或 `string`对象）和用来存储款项的 `double`成员。读取所有的数据后，程序将显示所有捐款超过 10000 的捐款者的姓名及其捐款数额。
+**题：** 编写一个程序，记录捐助给 “维护合法权利团体” 的资金。该程序要求用户输入捐献者数目，然后要求用户输入每一个捐献者的姓名和款项。这些信息被储存在一个动态分配的结构体数组中。每个结构体有两个成员：用来储存姓名的字符数组（或 `string`对象）和用来存储款项的 `double`成员。读取所有的数据后，程序将显示所有捐款超过 10000 的捐款者的姓名及其捐款数额。
 
-该列表前应包含一个标题，指出下面的捐款者是重要捐款人 Grand Patrons。然后，程序将列出其他的捐款者，该列表要以 `Patrons`开头。如果某种类别没有捐款者，则程序将打印单词 `none`。该程序只显示这两种类别，而不进行排序。
+该列表前应包含一个标题，指出下面的捐款者是重要捐款人 Grand Patrons。然后，程序将列出其他的捐款者，该列表要以 `Patrons` 开头。如果某种类别没有捐款者，则程序将打印单词 `none`。该程序只显示这两种类别，而不进行排序。
 
 
 **解：**
 
+```Cpp
+#include <iostream>
+#include <string>
+
+
+int main() {
+
+    using namespace std;
+
+    const int Grand_Amount = 10000; 
+
+    struct Patron {
+        string name;
+        double amount;
+    };
+
+    int contribute_num = 0;
+    cout << "Enter the number of contributor: ";
+    cin >> contribute_num;
+    cin.get();  // 读取输入流中的回车符
+
+    Patron *p_contribution = new Patron [contribute_num];
+    for (int i = 0; i < contribute_num; ++i) {
+        cout << "Enter the name of " << i + 1 << " contributor: ";
+        getline(cin, p_contribution[i].name);
+
+        cout << "Enter the amount of donation: ";
+        cin >> p_contribution[i].amount;
+        cin.get();  // 读取输入流中的回车符
+    }
+
+    unsigned int grand_amount_n = 0;
+    cout << "\nGrand patron: " << endl;
+    for (int i = 0; i < contribute_num; ++i) {
+
+        if (p_contribution[i].amount > Grand_Amount) {
+            cout << "Contributor name: " << p_contribution[i].name << "\n"
+                 << "Contributor amount: " << p_contribution[i].amount << endl;
+            ++grand_amount_n;
+        }
+    }
+
+    if (grand_amount_n == 0) {
+        cout << "None" << endl;
+    }
+
+    bool is_empty = true;
+    cout << "\nPatrons: " << endl;
+    for (int i=0; i < contribute_num; ++i) {
+        cout << "Contributor name: " << p_contribution[i].name << "\n"
+             << "Contributor amount: " << p_contribution[i].amount << endl;
+
+        is_empty = false;
+    }
+
+    if (is_empty) {
+        cout << "** None **" << endl;
+    }
+
+    return 0;
+}
+
+```
+
 
 ## 6.7
 
-**题：** 编写一个程序，它每次读取一个单词，直到用户只输入 `q`。然后，该程序指出有多少个单词以元音打头，有多少个单词以辅音打头，
-还有多少个单词不属于这两类。为此，方法之一是，使用 `isalpha()` 来区分以字母和其他字符打头的单词，然后对于通过了 `isalpha()` 
-测试的单词，使用 `if` 或 `switch` 语句来确定哪些以元音打头。该程序的运行情况如下：
+**题：** 编写一个程序，它每次读取一个单词，直到用户输入 `q`。然后，该程序指出有多少个单词以元音打头，有多少个单词以辅音打头，还有多少个单词不属于这两类。为此，方法之一是，使用 `isalpha()` 来区分以字母和其他字符打头的单词，然后对于通过了 `isalpha()` 测试的单词，使用 `if` 或 `switch` 语句来确定哪些以元音打头。
+
+该程序的运行情况如下：
+
 
 ```bash
 Enter words (q to quit):
@@ -346,12 +411,94 @@ quietly across 15 meters of lawn. q
 
 **解：**
 
+```Cpp
+#include <iostream>
+#include <cctype>
+#include <string>
+
+
+int main() {
+
+    using namespace std;
+
+    unsigned int vowels = 0;
+    unsigned int consonants = 0;
+    unsigned int other = 0;
+    string input;
+
+    cout << "Enter words (q to quit): " << endl;
+    while (cin >> input) {
+        if (input == "q")
+            break;
+
+        if (isalpha(input[0])) {
+            switch(toupper(input[0])) {
+
+                case 'A':;
+                case 'E':;
+                case 'I':;
+                case 'O':;
+                case 'U':
+                    ++vowels;
+                    break;
+
+                default:
+                    ++consonants;
+                    break;
+            }
+        } else {
+            ++other;
+        }
+    }
+
+    cout << vowels << " words beginning with vowels.\n"
+         << consonants << " words beginning with consonants.\n"
+         << other << " words beginning with other letter." << endl;
+
+    return 0;
+}
+
+```
+
 
 ## 6.8
 
 **题：** 编写一个程序，它打开一个文件文件，逐个字符地读取该文件，直到到达文件末尾，然后指出该文件中包含多少个字符。
 
+
 **解：**
+
+```Cpp
+#include <iostream>
+#include <fstream>
+#include <string>
+
+
+int main() {
+    using namespace std;
+
+    string fn;
+    ifstream in_file_handle;
+
+    unsigned int n = 0;
+    char ch;
+
+    cout << "Enter a file name: ";
+    getline(cin, fn);
+
+    in_file_handle.open(fn.c_str());
+    while ((ch = in_file_handle.get()) != EOF) {
+        ++n;
+    }
+    in_file_handle.close();
+
+    cout << "There are " << n << " characters in " 
+         << fn << " file." << endl;
+
+    return 0;
+}
+
+```
 
 
 ## 6.9
