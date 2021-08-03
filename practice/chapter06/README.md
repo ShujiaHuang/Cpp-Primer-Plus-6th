@@ -7,6 +7,36 @@
 
 **解：**
 
+```Cpp
+#include <iostream>
+#include <cctype>
+
+
+int main() {
+    using namespace std;
+    char ch;
+
+    cout << "Enter any charater: ";
+    while ((ch=cin.get()) != '@') {
+
+        if (isdigit(ch)) {
+            continue;
+        } else if (islower(ch)) {
+            ch = toupper(ch);
+        } else if (isupper(ch)) {
+            ch = tolower(ch);
+        }
+
+        cout << ch;
+
+    }
+
+    cout << "** done **" << endl;
+
+    return 0;
+}
+```
+
 
 ## 6.2
 
@@ -14,6 +44,43 @@
 
 
 **解：**
+
+```Cpp
+#include <iostream>
+#include <array>
+
+
+int main() {
+    using namespace std;
+    
+    const unsigned int size = 10;
+    array<double, size> donation;
+
+    double sum_value = 0;
+    unsigned int large_avg = 0, n = 0;
+
+    cout << "Enter 10 double value or type non-digital value to exit: ";
+    while ((n < size) && (cin >> donation[n])) {
+        
+        sum_value += donation[n];
+        ++n;
+    }
+
+    double avg = sum_value / n;
+    for (int i=0; i < n; i++) {
+
+        if (donation[i]>avg)
+            ++large_avg;
+    }
+
+    cout << "The average value is: " << avg
+         << ", there are " << large_avg
+         << " larger than average value." << endl;
+
+    return 0;
+}
+
+```
 
 
 ## 6.3
@@ -28,17 +95,58 @@ t) tree         g) game
 f
 
 Please enter a c, p, t, or g: q
-Please enter a c, p, t, or g: t
 A maple is a tree.
 
 ```
 
 **解：**
 
+```Cpp
+#include <iostream>
+
+int main() {
+
+    using namespace std;
+    cout << "Please enter one of the following choice: \n";
+    cout << "c) carnivore\tp) pianist.\n"
+         << "t) tree\tg) game" << endl;
+
+    bool exit = false;
+    char c;
+    while (!exit && (cin >> c)) {
+
+        switch (c) {
+            case 'c': 
+                cout << "Tiger is a carnivore." << endl;
+                exit = true;
+                break;
+            case 'p':
+                cout << "Mozart is a great pianst." << endl;
+                exit = true;
+                break;
+            case 't':
+                cout << "A maple is a tree." << endl;
+                exit = true;
+                break;
+            case 'g':
+                cout << "Supper Mario is a great game." << endl;
+                exit = true;
+                break;
+
+            default:
+                cout << "Please enter c, p, t, or g: q" << endl;
+                break;
+        }
+    }
+    return 0;
+}
+
+```
+
 
 ## 6.4
 
-**题：** 加入 `Benevolent Order of Programmer` 后，在BOP大会上，人们便可以通过加入者的真实姓名、头衔或秘密BOP姓名来了解他（她）。请编写一个程序，可以使用真实姓名、头衔、秘密姓名或成员偏好来列出 成员。编写该程序时，请使用下面的结构：
+**题：** 加入 `Benevolent Order of Programmer` 后，在BOP大会上，人们便可以通过加入者的真实姓名、头衔或秘密BOP姓名来了解他（她）。请编写一个程序，可以使用真实姓名、头衔、秘密姓名或成员偏好来列出成员。编写该程序时，请使用下面的结构：
 
 ```Cpp
 // Benevolent order of programmers strcture
@@ -55,15 +163,12 @@ struct bop {
 该程序创建一个有上述结构体组成的小型数组，并将其初始化为适当的值。另外，该程序使用一个循环，让用户在下面的选项中进行选择：
 
 ```bash
-
 a. display by name     b. display by title
 c. display by bopname  d. display by preference
 q. quit
-
 ```
 
-注意，`display by preference` 并不意味着显示成员的偏好，而是意味着根据成员的偏好来列出成员。例如，如果偏好号为 1，则选择 
-d 将显示成员的头衔。该程序的运行情况如下：
+注意，`display by preference` 并不意味着显示成员的偏好，而是意味着根据成员的偏好来列出成员。例如，如果偏好号为 1，则选择 d 将显示成员的头衔。该程序的运行情况如下：
 
 ```bash
 Benevolent order of Programmers report.
@@ -95,6 +200,73 @@ Bye!
 **解：**
 
 
+```Cpp
+#include <iostream>
+
+
+int main() {
+
+    using namespace std;
+
+    const int strsize = 80;
+    struct Bop {
+        char fullname[strsize]; // real name
+        char title[strsize];    // job title
+        char bopname[strsize];  // secret BOP name
+        int preference;         // 0 = fullname, 1 = title, 2 = bopname
+    };
+
+    const int size = 5;
+    const Bop bops[size] = {
+        {"Wimp Macho", "bbb", "c", 0},
+        {"Raki Rhodes", "2XXXX", "3XXXXX", 1},
+        {"Celia Laiter", "2AAAA", "3AAAAA", 2},
+        {"Hoppy Hipman", "2BBBB", "3BBBBB", 0},
+        {"Pat Hand", "4CCCC", "3CCCCC", 1}
+    };
+
+    cout << "Benevolent order of Programmers report.\n";
+    cout << "a. display by name     b. display by title\n"
+         << "c. display by bopname  d. display by preference\n"
+         << "q. quit" << endl;
+
+    char ch;
+    while (cin >> ch) {
+
+        if (ch == 'q') { 
+            break; 
+        }
+
+        for (int i=0; i < size; ++i) {
+
+            switch (ch) {
+                case 'a':
+                    cout << bops[i].fullname << "\n";
+                    break;
+                case 'b':
+                    cout << bops[i].title << "\n";
+                    break;
+                case 'c':
+                    cout << bops[i].bopname << "\n";
+                    break;
+                case 'd':
+                    cout << bops[i].preference << "\n";
+                    break;
+
+                default:
+                    break;
+            }
+        }
+
+        cout << "Next choice: ";
+    }
+    cout << "** Done **" << endl;
+    return 0;
+}
+
+```
+
+
 ## 6.5
 
 **题：** 在 `Neutronia` 王国，货币单位是 `tvarp`，收入所得税的计算方式如下：
@@ -110,13 +282,46 @@ Bye!
 
 **解：**
 
+```Cpp
+#include <iostream>
+
+int main() {
+    using namespace std;
+    const double tax_rate1 = 0.1;
+    const double tax_rate2 = 0.15;
+    const double tax_rate3 = 0.20;
+
+    double income = 0.0, tax = 0.0;
+    cout << "Please enter your income: ";
+    while ((cin >> income) && (income > 0)) {
+
+        if (income <= 5000) {
+            tax = 0.0;
+        } else if (income <= 15000 ) {
+
+            tax = (income - 5000) * tax_rate1;
+        } else if (income <= 35000) {
+
+            tax = (15000 - 5000) * tax_rate1 + (income - 15000) * tax_rate2;
+        } else {
+            tax = (15000 - 5000) * tax_rate1 + (35000 - 15000) * tax_rate2 + (income - 35000) * tax_rate3;
+        }
+
+        cout << "Income = " << income << ", tax = " << tax << endl;
+        cout << "Please enter your income again or enter a negative value to quit: ";
+    }
+
+    return 0;
+}
+
+```
+
 
 ## 6.6
 
-**题：** 编写一个程序，记录捐助给“维护合法权利团体”的资金。该程 序要求用户输入捐献者数目，然后要求用户输入每一个捐献者的姓名和款项。
-这些信息被储存在一个动态分配的结构数组中。每个结构有两个成员：用来储存姓名的字符数组（或 `string` 对象）和用来存储款项的 `double` 成员。
-读取所有的数据后，程序将显示所有捐款超过 10000 的捐 款者的姓名及其捐款数额。该列表前应包含一个标题，指出下面的捐款者是重要捐款人 Grand Patrons。
-然后，程序将列出其他的捐款者，该列表要以 `Patrons` 开头。如果某种类别没有捐款者，则程序将打印单词 `none`。该程序只显示这两种类别，而不进行排序。
+**题：** 编写一个程序，记录捐助给“维护合法权利团体”的资金。该程序要求用户输入捐献者数目，然后要求用户输入每一个捐献者的姓名和款项。这些信息被储存在一个动态分配的结构数组中。每个结构有两个成员：用来储存姓名的字符数组（或 `string`对象）和用来存储款项的 `double`成员。读取所有的数据后，程序将显示所有捐款超过 10000 的捐款者的姓名及其捐款数额。
+
+该列表前应包含一个标题，指出下面的捐款者是重要捐款人 Grand Patrons。然后，程序将列出其他的捐款者，该列表要以 `Patrons`开头。如果某种类别没有捐款者，则程序将打印单词 `none`。该程序只显示这两种类别，而不进行排序。
 
 
 **解：**
