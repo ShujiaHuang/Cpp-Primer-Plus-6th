@@ -28,7 +28,7 @@
 - [第 03 章 : 处理数据，数据类型](practice/chapter03/README.md) | ([笔记](practice/booknotes.md#第三章-处理数据))
 - [第 04 章 : 复合类型](practice/chapter04/README.md) | ([笔记](practice/booknotes.md#第四章-复合类型))
 - [第 05 章 : 循环和关系表达式](practice/chapter05/README.md) | ([笔记](practice/booknotes.md#第五章-循环和关系表达式))
-- [第 06 章 : 分支语句和逻辑运算符](practice/chapter06/README.md)
+- [第 06 章 : 分支语句和逻辑运算符](practice/chapter06/README.md) | ([笔记](practice/booknotes.md#第七章-函数C++的编程模块))
 - [第 07 章 : 函数](practice/chapter07/README.md)
 - [第 08 章 : 函数幽探](practice/chapter08/README.md)
 - [第 09 章 : 内存模型和名称空间](practice/chapter09/README.md)
