@@ -35,8 +35,8 @@
 
 **第 II 部分 : 类设计者的工具**
 
-- [第 10 章 : 对象和类](practice/chapter10/README.md)
-- [第 11 章 : 实用类](practice/chapter11/README.md)
+- [第 10 章 : 对象和类](practice/chapter10/README.md) | ([笔记](practice/booknotes.md#第十章-对象和类))
+- [第 11 章 : 使用类](practice/chapter11/README.md)
 - [第 12 章 : 类和动态内存分配](practice/chapter12/README.md)
 - [第 13 章 : 类继承](practice/chapter13/README.md)
 
