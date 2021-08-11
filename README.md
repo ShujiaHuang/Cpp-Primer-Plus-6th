@@ -31,7 +31,7 @@
 - [第 06 章 : 分支语句和逻辑运算符](practice/chapter06/README.md) | ([笔记](practice/booknotes.md#第六章-分支语句和逻辑运算符))
 - [第 07 章 : 函数](practice/chapter07/README.md) | ([笔记](practice/booknotes.md#第七章-函数C++的编程模块))
 - [第 08 章 : 函数幽探](practice/chapter08/README.md) | ([笔记](practice/booknotes.md#第八章-函数探幽))
-- [第 09 章 : 内存模型和名称空间](practice/chapter09/README.md)
+- [第 09 章 : 内存模型和名称空间](practice/chapter09/README.md) | ([笔记](practice/booknotes.md#第九章-内存模型和名称空间))
 
 **第 II 部分 : 类设计者的工具**
 
