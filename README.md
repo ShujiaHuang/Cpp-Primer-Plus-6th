@@ -36,17 +36,17 @@
 **第 II 部分 : 类设计者的工具**
 
 - [第 10 章 : 对象和类](practice/chapter10/README.md) | ([笔记](practice/booknotes.md#第十章-对象和类))
-- [第 11 章 : 使用类](practice/chapter11/README.md)
-- [第 12 章 : 类和动态内存分配](practice/chapter12/README.md)
-- [第 13 章 : 类继承](practice/chapter13/README.md)
+- [第 11 章 : 使用类](practice/chapter11/README.md) | ([笔记](practice/booknotes.md#第十一章-使用类))
+- [第 12 章 : 类和动态内存分配](practice/chapter12/README.md) | ([笔记](practice/booknotes.md#第十二章-类和动态内存分配))
+- [第 13 章 : 类继承](practice/chapter13/README.md) | ([笔记](practice/booknotes.md#第十三章-类继承))
 
 **第 III 部分 : 高级主题和标准库**
 
-- [第 14 章 : C++ 中的代码重用](practice/chapter14/README.md)
-- [第 15 章 : 友元、异常和其他](practice/chapter15/README.md)
-- [第 16 章 : string 类和标准模板库](practice/chapter16/README.md)
-- [第 17 章 : 输入、输出和文件](practice/chapter17/README.md)
-- [第 18 章 : 探讨 C++ 新特性](practice/chapter18/README.md)
+- [第 14 章 : C++中的代码重用](practice/chapter14/README.md) | ([笔记](practice/booknotes.md#第十四章-C++中的代码重用))
+- [第 15 章 : 友元、异常和其他](practice/chapter15/README.md) | ([笔记](practice/booknotes.md#第十五章-友元、异常和其他))
+- [第 16 章 : string 类和标准模板库](practice/chapter16/README.md) | ([笔记](practice/booknotes.md#第十六章-string类和标准模板库))
+- [第 17 章 : 输入、输出和文件](practice/chapter17/README.md) | ([笔记](practice/booknotes.md#第十七章-输入、输出和文件))
+- [第 18 章 : 探讨 C++ 新特性](practice/chapter18/README.md) | ([笔记](practice/booknotes.md#第十八章-探讨C++新标准))
 
 <p align="center"><a> ---- END ---- </a></p>
 
