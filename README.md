@@ -12,7 +12,7 @@
 《C++ Primer Plus（第6版）中文版》 带书签 pdf 电子书可以从我的百度云盘下载：
 
 ```bash
-链接: https://pan.baidu.com/s/1WXc_hfJhJKL4c8InAVXHMg  密码: cg2f
+链接: https://pan.baidu.com/s/1WXc_hfJhJKL4c8InAVXHMg  提取密码: cg2f
 ```
 
 全书一共 18 章，外加 10 章附录，pdf 文件大小 157.06 MB。虽然很大，但这是文字版+完整标签，而非扫描版。
