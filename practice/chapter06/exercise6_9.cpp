@@ -19,7 +19,7 @@ int main() {
     int contribute_num = 0;
     cout << "Enter a file name: ";
 
-    getline(cin, file_name);
+    getline(cin, file_name);  // 读一整行，行末回车符排除
     in_file_handle.open(file_name.c_str());
     in_file_handle >> contribute_num;
     in_file_handle.get();  // 读掉空白(包括滞留在行末的回车符)
