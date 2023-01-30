@@ -13,7 +13,7 @@
 
 ```bash
 百度网盘: https://pan.baidu.com/s/1WXc_hfJhJKL4c8InAVXHMg  提取密码: cg2f
-阿里云盘(速度快): https://www.aliyundrive.com/s/Vm6YPruQEAp 提取码: oi09
+阿里云盘(速度快): https://www.aliyundrive.com/s/a82wzE9XWbf
 ```
 
 全书一共 18 章，外加 10 章附录，pdf 文件大小 157.06 MB。虽然很大，但这是文字版+完整标签，而非扫描版。
